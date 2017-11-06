@@ -46,6 +46,7 @@ if(function_exists('register_nav_menus')){
 		array(
 		  'header_menu' => 'Меню в шапке',
 		  'mobile_menu' => 'Меню для мобильных устройств',
+		  'footer_menu' => 'Меню в подвале',
 		)
 	);
 }
@@ -54,6 +55,18 @@ if(function_exists('register_nav_menus')){
 if ( function_exists( 'add_theme_support' ) ) {
     add_theme_support( 'post-thumbnails' );
 }
+
+//Вывод id категории
+function getCurrentCatID(){
+	global $wp_query;
+	if(is_category()){
+		$cat_ID = get_query_var('cat');
+	}
+	return $cat_ID;
+}
+
+//Запрет визуального редактора
+add_filter('user_can_richedit' , create_function ('' , 'return false;') , 50 );
 
 /**********************************************************************************************************************************************************
 ***********************************************************************************************************************************************************
@@ -152,6 +165,122 @@ class header_menu extends Walker_Nav_Menu {
 
 /**********************************************************************************************************************************************************
 ***********************************************************************************************************************************************************
+**************************************************************************ЗАГОЛОВОК************************************************************************
+***********************************************************************************************************************************************************
+***********************************************************************************************************************************************************/
+
+function get_title($display = true) {
+    global $wp_locale;
+ 
+    $m        = get_query_var( 'm' );
+    $year     = get_query_var( 'year' );
+    $monthnum = get_query_var( 'monthnum' );
+    $day      = get_query_var( 'day' );
+    $search   = get_query_var( 's' );
+    $title    = '';
+ 
+    $t_sep = '%WP_TITLE_SEP%'; // Temporary separator, for accurate flipping, if necessary
+ 
+    // If there is a post
+    if ( is_single() || ( is_home() && ! is_front_page() ) || ( is_page() && ! is_front_page() ) ) {
+        $title = single_post_title( '', false );
+    }
+ 
+    // If there's a post type archive
+    if ( is_post_type_archive() ) {
+        $post_type = get_query_var( 'post_type' );
+        if ( is_array( $post_type ) ) {
+            $post_type = reset( $post_type );
+        }
+        $post_type_object = get_post_type_object( $post_type );
+        if ( ! $post_type_object->has_archive ) {
+            $title = post_type_archive_title( '', false );
+        }
+    }
+ 
+    // If there's a category or tag
+    if ( is_category() || is_tag() ) {
+        $title = single_term_title( '', false );
+    }
+ 
+    // If there's a taxonomy
+    if ( is_tax() ) {
+        $term = get_queried_object();
+        if ( $term ) {
+            $title = single_term_title( $t_sep, false );
+        }
+    }
+ 
+    // If there's an author
+    if ( is_author() && ! is_post_type_archive() ) {
+        $author = get_queried_object();
+        if ( $author ) {
+            $title = $author->display_name;
+        }
+    }
+ 
+    // Post type archives with has_archive should override terms.
+    if ( is_post_type_archive() && $post_type_object->has_archive ) {
+        $title = post_type_archive_title( '', false );
+    }
+ 
+    // If there's a month
+    if ( is_archive() && ! empty( $m ) ) {
+        $my_year  = substr( $m, 0, 4 );
+        $my_month = $wp_locale->get_month( substr( $m, 4, 2 ) );
+        $my_day   = intval( substr( $m, 6, 2 ) );
+        $title    = $my_year . ( $my_month ? $t_sep . $my_month : '' ) . ( $my_day ? $t_sep . $my_day : '' );
+    }
+ 
+    // If there's a year
+    if ( is_archive() && ! empty( $year ) ) {
+        $title = $year;
+        if ( ! empty( $monthnum ) ) {
+            $title .= $t_sep . $wp_locale->get_month( $monthnum );
+        }
+        if ( ! empty( $day ) ) {
+            $title .= $t_sep . zeroise( $day, 2 );
+        }
+    }
+ 
+    // If it's a search
+    if ( is_search() ) {
+        /* translators: 1: separator, 2: search phrase */
+        $title = sprintf( __( 'Search Results %1$s %2$s' ), $t_sep, strip_tags( $search ) );
+    }
+ 
+    // If it's a 404 page
+    if ( is_404() ) {
+        $title = __( 'Page not found' );
+    }
+ 
+    $prefix = '';
+    if ( ! empty( $title ) ) {
+        $prefix = " $sep ";
+    }
+ 
+    $title_array = apply_filters( 'wp_title_parts', explode( $t_sep, $title ) );
+ 
+    // Determines position of the separator and direction of the breadcrumb
+    if ( 'right' == $seplocation ) { // sep on right, so reverse the order
+        $title_array = array_reverse( $title_array );
+        $title       = implode( " $sep ", $title_array ) . $prefix;
+    } else {
+        $title = $prefix . implode( " $sep ", $title_array );
+    }
+ 
+    $title = apply_filters( '', $title, $sep, $seplocation );
+ 
+    // Send it out
+    if ( $display ) {
+        echo $title;
+    } else {
+        return $title;
+    }
+}
+
+/**********************************************************************************************************************************************************
+***********************************************************************************************************************************************************
 *********************************************************************РАБОТА С METAПОЛЯМИ*******************************************************************
 ***********************************************************************************************************************************************************
 ***********************************************************************************************************************************************************/
@@ -185,6 +314,33 @@ function getNextGallery($post_id, $meta_key){
 	return $unserialize_value;	
 }
 
+//Получить урл изображения из произвольных полей для таксономии рубрики
+function getImageLinkCategory($taxonomy, $meta_key){
+	global $wpdb;
+	
+	$term = get_queried_object();
+	
+	$cat_id = $term->term_id;
+	
+	$cat_data = get_option($taxonomy . '_' . $cat_id . '_' . $meta_key);
+	var_dump($cat_data);
+		
+	$link = $wpdb->get_var( $wpdb->prepare("SELECT guid FROM $wpdb->posts WHERE ID = %s", $cat_data));
+	
+	return $link;
+}
+
+//Получить урл изображения из произвольных полей для таксономии single
+function getImageLinkSingle($post_id, $meta_key){
+	global $wpdb;
+	
+	$value = $wpdb->get_var( $wpdb->prepare("SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = %s AND post_id = %d" , $meta_key, $post_id));
+	
+	$link = $wpdb->get_var( $wpdb->prepare("SELECT guid FROM $wpdb->posts WHERE ID = %s", $value));
+	
+	return $link;
+}
+
 /**********************************************************************************************************************************************************
 ***********************************************************************************************************************************************************
 *******************************************************************SEO PATH FOR IMAGE**********************************************************************
@@ -209,3 +365,47 @@ function getTitleImage($meta_key){
 
 	return $attachment->post_title;
 }
+
+//Получить данные из произвольных полей для таксономии
+function getDataCategory($taxonomy, $meta_key){
+	global $wpdb;
+	
+	$term = get_queried_object();
+	
+	$cat_id = $term->term_id;
+	
+	$cat_data = get_option($taxonomy . '_' . $cat_id . '_' . $meta_key);
+			
+	return $cat_data;
+}
+
+/**********************************************************************************************************************************************************
+***********************************************************************************************************************************************************
+************************************************************ПЕРЕИМЕНОВАВАНИЕ ЗАПИСЕЙ В АКЦИИ***************************************************************
+***********************************************************************************************************************************************************
+***********************************************************************************************************************************************************/
+function change_post_menu_label() {
+    global $menu, $submenu;
+    $menu[5][0] = 'Акции';
+    $submenu['edit.php'][5][0] = 'Акции';
+    $submenu['edit.php'][10][0] = 'Добавить акцию';
+    $submenu['edit.php'][16][0] = 'Акционные метки';
+    echo '';
+}
+add_action( 'admin_menu', 'change_post_menu_label' );
+
+function change_post_object_label() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'Акции';
+    $labels->singular_name = 'Акции';
+    $labels->add_new = 'Добавить акцию';
+    $labels->add_new_item = 'Добавить акцию';
+    $labels->edit_item = 'Редактировать акцию';
+    $labels->new_item = 'Добавить акцию';
+    $labels->view_item = 'Посмотреть акцию';
+    $labels->search_items = 'Найти акцию';
+    $labels->not_found = 'Не найдено';
+    $labels->not_found_in_trash = 'Корзина пуста';
+}
+add_action( 'init', 'change_post_object_label' );

@@ -100,69 +100,130 @@ Version: 1.0
 		
 		<?php echo getMeta('social_links_main_page'); ?>
 		
-		<!-- start header -->
-		
-		<header class="header-page-main">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<!-- start top-line -->
-						<div class="top-line">
-							<div class="left-block">
-								
-								<div class="logo-block">
+		<?php if( is_front_page() ) { ?>
+			<!-- start header -->
+			
+			<header class="header-page-main">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- start top-line -->
+							<div class="top-line">
+								<div class="left-block">
 									
-									<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo">
-										<img src="<?php echo getImageLink('primary_logotype_main_page'); ?>" alt="<?php echo getAltImage('primary_logotype_main_page'); ?>">
-									</a>
+									<div class="logo-block">
+										<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo">
+											<img src="<?php echo getImageLink('primary_logotype_main_page'); ?>" alt="<?php echo getAltImage('primary_logotype_main_page'); ?>">
+										</a>
+									</div>
+									
+									<div class="description-logo">
+										<?php echo getMeta('slogan_site_main_page'); ?>
+									</div>
+									
 								</div>
-								
-								<div class="description-logo">
-									<?php echo getMeta('slogan_site_main_page'); ?>
+								<div class="right-block">
+									
+									<?php echo getMeta('reservation_links_main_page'); ?>
+									
+									<div class="phones-block">
+										<?php echo getMeta('contact_informations_main_page'); ?>
+									</div>
 								</div>
-								
 							</div>
-							<div class="right-block">
-								
-								<?php echo getMeta('reservation_links_main_page'); ?>
-								
-								<div class="phones-block">
-									<?php echo getMeta('contact_informations_main_page'); ?>
-								</div>
-							</div>
+							<!-- end top-line -->
 						</div>
-						<!-- end top-line -->
-					</div>
-					<div class="col-md-12">
-						<!-- start bottom-line (menu) -->
-						
-						<?php
-							if (has_nav_menu('header_menu')){
-								wp_nav_menu( array(
-									'theme_location'  => 'header_menu',
-									'menu'            => '',
-									'container'       => false,
-									'container_class' => '',
-									'container_id'    => '',
-									'menu_class'      => '',
-									'menu_id'         => '',
-									'echo'            => true,
-									'fallback_cb'     => 'wp_page_menu',
-									'before'          => '',
-									'after'           => '',
-									'link_before'     => '',
-									'link_after'      => '',
-									'items_wrap'      => '<nav class="menu"><ul>%3$s</ul></nav>',
-									'depth'           => 3,
-									'walker'          => new header_menu(),
-								) );
-							}
-						?>
-
-						<!-- end bottom-line (menu) -->
+						<div class="col-md-12">
+							<!-- start bottom-line (menu) -->
+							
+							<?php
+								if (has_nav_menu('header_menu')){
+									wp_nav_menu( array(
+										'theme_location'  => 'header_menu',
+										'menu'            => '',
+										'container'       => false,
+										'container_class' => '',
+										'container_id'    => '',
+										'menu_class'      => '',
+										'menu_id'         => '',
+										'echo'            => true,
+										'fallback_cb'     => 'wp_page_menu',
+										'before'          => '',
+										'after'           => '',
+										'link_before'     => '',
+										'link_after'      => '',
+										'items_wrap'      => '<nav class="menu"><ul>%3$s</ul></nav>',
+										'depth'           => 3,
+										'walker'          => new header_menu(),
+									) );
+								}
+							?>
+	
+							<!-- end bottom-line (menu) -->
+						</div>
 					</div>
 				</div>
-			</div>
-		</header>
+			</header>
+			
+			<!-- end header -->
+		<?php }else{ ?>
 		
-		<!-- end header -->
+			<header class="header-page-main header-other-page">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- start top-line -->
+							<div class="top-line">
+								<div class="left-block">
+									<div class="logo-block">
+										<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo">
+											<img src="<?php echo getImageLink('second_logotype_main_page'); ?>" alt="<?php echo getAltImage('second_logotype_main_page'); ?>">
+										</a>
+									</div>
+									<div class="description-logo">
+										<?php echo getMeta('slogan_site_main_page'); ?>
+									</div>
+								</div>
+								<div class="right-block">
+									
+									<?php echo getMeta('reservation_links_main_page'); ?>
+									
+									<div class="phones-block">
+										<?php echo getMeta('contact_informations_main_page'); ?>
+									</div>
+								</div>
+							</div>
+							<!-- end top-line -->
+						</div>
+						<div class="col-md-12">
+							<!-- start bottom-line (menu) -->
+							
+							<?php
+								if (has_nav_menu('header_menu')){
+									wp_nav_menu( array(
+										'theme_location'  => 'header_menu',
+										'menu'            => '',
+										'container'       => false,
+										'container_class' => '',
+										'container_id'    => '',
+										'menu_class'      => '',
+										'menu_id'         => '',
+										'echo'            => true,
+										'fallback_cb'     => 'wp_page_menu',
+										'before'          => '',
+										'after'           => '',
+										'link_before'     => '',
+										'link_after'      => '',
+										'items_wrap'      => '<nav class="menu"><ul>%3$s</ul></nav>',
+										'depth'           => 3,
+										'walker'          => new header_menu(),
+									) );
+								}
+							?>
+							
+							<!-- end bottom-line (menu) -->
+						</div>
+					</div>
+				</div>
+			</header>
+		<?php } ?>
