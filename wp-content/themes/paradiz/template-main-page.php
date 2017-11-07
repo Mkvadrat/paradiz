@@ -141,7 +141,7 @@ get_header();
     				$slider_image = $nggdb->get_gallery($slider_id[0]["ngg_id"], 'sortorder', 'ASC', false, 0, 0);
     				if($slider_image){
     					foreach($slider_image as $image) {
-    				?>
+    			?>
                         <div>
                             <img src="<?php echo nextgen_esc_url($image->imageURL); ?>" alt="<?php echo esc_attr($image->alttext); ?>">
                             <div class="description-block">

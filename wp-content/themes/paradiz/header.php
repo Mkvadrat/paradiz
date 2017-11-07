@@ -80,7 +80,10 @@ Version: 1.0
 	<!-- jquery ui -->
 	<link type="text/css" rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/js/jquery-ui-1.12.1/jquery-ui.min.css" />
 	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-
+	
+	<!-- reviews -->
+	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/reviews.js"></script>
+	
 	<?php wp_head(); ?>
 
 </head>
