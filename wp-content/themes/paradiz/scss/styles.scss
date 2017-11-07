@@ -577,6 +577,460 @@ p {
 	}
 }
 
+.sidebar {
+
+	.title-sidebar {
+		margin-bottom: 30px;
+		text-transform: uppercase;
+		@include fontText ("LoraRegular", 18px, 700, 22px, #791813);
+	}
+
+	.list-links-gallerys {
+		padding-bottom: 15px;
+		margin-left: 0;
+
+		li {
+			padding-bottom: 20px;
+			padding-left: 0;
+			
+			&::before {
+				display: none;
+			}
+
+			a {
+				display: inline-block;
+				position: relative;
+				padding-left: 50px;
+				text-transform: uppercase;
+				text-decoration: none;
+				letter-spacing: 0.5px;
+				@include fontText ("MyriadPro-Regular", 16px, 700, 20px, #323232);
+				-webkit-transition: 0.5s;
+				-moz-transition: 0.5s;
+				-ms-transition: 0.5s;
+				-o-transition: 0.5s;
+				transition: 0.5s;
+				
+				&::before {
+					content: "";
+					position: absolute;
+					top: 10px;
+					left: 0;
+					display: block;
+					height: 1px;
+					width: 40px;
+					background: #323232;
+				}
+
+				&:hover {
+					-webkit-transform: translateX(10px);
+					-moz-transform: translateX(10px);
+					-ms-transform: translateX(10px);
+					-o-transform: translateX(10px);
+					transform: translateX(10px);
+				}
+			}
+
+			ul {
+				padding-top: 17px;
+				
+				li {
+
+					&:last-child {
+						padding-bottom: 0;
+					}
+					
+					a::before {
+						width: 10px;
+						left: 30px;
+					}
+				}
+			}
+		}
+	}
+
+	.form-block {
+		margin-bottom: 25px;
+		padding: 30px;
+		background-color: #f1f1f1;
+		border-radius: 15px;
+
+		&.no-textarea {
+			input[type="tel"] {
+				margin-bottom: 20px;
+			}
+
+			.info {
+		    	margin-bottom: 14px;
+		    }
+		}
+		
+		&.form-block-room {
+			background-repeat: no-repeat;
+			background-size: cover;  
+			background: url("../images/form-block-room-bg.jpg");
+			
+			input[type="text"] {
+				display: block;
+				width: 100%;
+				height: 61px;
+				padding: 10px 25px;
+				margin-bottom: 30px;
+				border: none;
+				background-color: #892422;
+				@include fontText ("MyriadPro-Regular", 18px, 400, 22px, #fff);
+				-webkit-transition: 0.3s;
+				-moz-transition: 0.3s;
+				-ms-transition: 0.3s;
+				-o-transition: 0.3s;
+				transition: 0.3s;
+				
+				&:focus {
+					background-color: #892422;
+				}
+			}
+
+			input[type="submit"] {
+				display: block;
+				width: 160px;
+				height: 40px;
+				border: none;
+				margin-top: 30px;
+				background-color: #f9ad40;
+				text-align: center;
+				text-transform: uppercase;
+				@include fontText ("MyriadPro-Regular", 18px, 400, 41px, #690907);
+				-webkit-transition: 0.3s;
+				-moz-transition: 0.3s;
+				-ms-transition: 0.3s;
+				-o-transition: 0.3s;
+				transition: 0.3s;
+				
+				&:hover {
+					background: #690907;
+					color: #f9ad40;
+				}
+			}
+		}
+
+		label {
+			padding-bottom: 10px;
+			@include fontText ("MyriadPro-Regular", 18px, 400, 24px, #2d2d2d);
+		}
+		
+		input[type="text"],
+		input[type="email"],
+		input[type="tel"] {
+			display: block;
+			width: 100%;
+			height: 49px;
+			padding: 10px 25px;
+			margin-bottom: 20px;
+			border: none;
+			border-radius: 3px;
+			background-color: rgba(255, 255, 255, 0.7);
+			@include fontText ("MyriadPro-Regular", 18px, 400, 22px, #2d2d2d);
+			-webkit-transition: 0.3s;
+			-moz-transition: 0.3s;
+			-ms-transition: 0.3s;
+			-o-transition: 0.3s;
+			transition: 0.3s;
+			
+			&:focus {
+				background-color: rgba(255, 255, 255, 1);
+			}
+		}
+
+		.number-guests,
+		.hours,
+		.minutes {
+			width: 100%;
+			height: 49px;
+			position: relative;
+			margin-bottom: 20px;
+			
+			input {
+				padding: 10px 35px 10px 25px;
+			}
+			
+			.plus-but,
+			.minus-but {
+				position: absolute;
+				right: 10px; 
+				display: block;
+				width: 20px;
+				height: 11px;
+				background-color: transparent;
+				border: none; 
+				background: url("../images/arrow-form.png");
+				background-position: center;
+				background-repeat: no-repeat;
+				
+				&:active {
+					right: 9px;
+				} 
+			}
+			
+			.plus-but {
+				top: 7px;
+				
+				&:active {
+					top: 8px;
+				}
+			}
+
+			.minus-but {
+				bottom: 7px;
+				-webkit-transform: rotate(180deg);
+				-moz-transform: rotate(180deg);
+				-ms-transform: rotate(180deg);
+				-o-transform: rotate(180deg);
+				transform: rotate(180deg);
+				    
+				&:active {
+					bottom: 6px;
+				}
+			}
+		}
+
+		.change-hall {
+			width: 100%;
+			height: 49px;
+			position: relative;
+			margin-bottom: 20px;
+			
+			button {
+				position: absolute;
+				right: 10px; 
+				top: 20px;
+				display: block;
+				width: 20px;
+				height: 11px;
+				background-color: transparent;
+				border: none; 
+				background: url("../images/arrow-form.png");
+				background-position: center;
+				background-repeat: no-repeat;
+				-webkit-transform: rotate(180deg);
+				-moz-transform: rotate(180deg);
+				-ms-transform: rotate(180deg);
+				-o-transform: rotate(180deg);
+				transform: rotate(180deg);
+				
+				&:active {
+					top: 21px;
+					right: 9px;
+				}
+			}
+		}
+
+		.date-time {
+			width: 100%;
+			height: 49px;
+			position: relative;
+			margin-bottom: 20px;
+			
+			#date {
+				width: 46%;
+				float: left;
+			}
+
+			.hours,
+			.minutes {
+				float: left;
+				width: 24%;
+				float: right;
+				
+				input {
+					padding: 10px 35px 10px 12px;
+				}
+			}
+
+			.minutes {
+				position: relative;
+				margin-right: 9px;
+				
+				&:after {
+					position: absolute;
+					top: 11px;
+					right: -6px;
+					content: ":";
+					@include fontText ("MyriadPro-Regular", 18px, 400, 24px, #2d2d2d);
+				}
+			}
+		}
+
+		textarea {
+			height: 150px;
+			width: 100%;
+			padding: 22px 25px;
+			margin-bottom: 18px;
+			resize: none;
+			border: none;
+			border-radius: 3px;
+			background-color: rgba(255, 255, 255, 0.7);
+			@include fontText ("MyriadPro-Regular", 18px, 400, 22px, #690907);
+			
+			&:focus {
+				background-color: rgba(255, 255, 255, 1);
+			}
+		}
+
+		.info {
+			margin-bottom: 25px;
+			@include fontText ("MyriadPro-Regular", 14px, 400, 18px, #2d2d2d);
+			
+			a {
+				color: #791813;
+				font-style: italic;
+				text-decoration: underline;
+				
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+
+		input[type="submit"] {
+			display: block;
+			width: 155px;
+			height: 40px;
+			border: 2px solid #7c1c18;
+			margin-top: 30px;
+			background: transparent;
+			text-align: center;
+			text-transform: uppercase;
+			@include fontText ("LoraRegular", 12px, 700, 39px, #7c1c18);
+			-webkit-transition: 0.3s;
+			-moz-transition: 0.3s;
+			-ms-transition: 0.3s;
+			-o-transition: 0.3s;
+			transition: 0.3s;
+			
+			&:hover {
+				background: #7c1c18;
+				color: #fff;
+			}
+		}
+	}
+
+	.links-block {
+		height: 110px;
+		margin-bottom: 25px;
+		padding: 10px;
+		background-image: url("../images/bg-sidebar-links-block.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+		a {
+			display: flex;
+			-webkit-flex-wrap: wrap;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+			-webkit-flex-direction: row;
+			-ms-flex-direction: row;
+			flex-direction: row;
+			width: 50%;
+			height: 100%;
+			float: left;
+			-webkit-align-items: center;
+			align-items: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+			text-align: center;
+			text-transform: uppercase;
+			@include fontText ("LoraRegular", 20px, 700, 26px, #323232);
+			
+			span {
+				width: 100%;
+				display: block;
+				text-transform: none;
+				@include fontText ("LoraRegular", 16px, 700, 20px, #323232);
+			}
+
+			img {
+				-webkit-transition: 0.3s;
+				-moz-transition: 0.3s;
+				-ms-transition: 0.3s;
+				-o-transition: 0.3s;
+				transition: 0.3s;
+			}
+
+			&:hover img {
+				-webkit-transform: scale(1.1);
+				-moz-transform: scale(1.1);
+				-ms-transform: scale(1.1);
+				-o-transform: scale(1.1);
+				transform: scale(1.1);
+			}
+		}
+	}
+}
+
+.list-reviews {
+	padding-top: 40px;
+	
+	li {
+		margin-bottom: 40px;
+		
+		a {
+			position: relative;
+			display: block;
+			float: left;
+			cursor: pointer;
+			margin-right: 30px;
+			margin-bottom: 30px;
+			
+			&::before {
+				content: "";
+				display: block;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				opacity: 0;
+				background-color: rgba(255, 255, 255, 0.5);
+				background-image: url(../images/icon-search.png);
+				background-repeat: no-repeat;
+				background-position: center;  
+				-webkit-transition: 0.5s;
+				-moz-transition: 0.5s;
+				-ms-transition: 0.5s;
+				-o-transition: 0.5s;
+				transition: 0.5s;
+			}
+
+			&:hover::before {
+				opacity: 1;
+			}
+		}
+
+		.description {
+			overflow: hidden;
+			
+			.title {
+				margin-bottom: 10px;
+				text-transform: uppercase;
+				@include fontText ("LoraRegular", 18px, 700, 22px, #791813);
+			}
+
+			p {
+				margin-bottom: 0;
+				@include fontText ("MyriadPro-Regular", 18px, 400, 24px, #2d2d2d);
+				
+				&:last-of-type {
+					padding-bottom: 15px;
+				}
+			}
+
+			time {
+				@include fontText ("MyriadPro-Regular", 18px, 700, 24px, #791813);
+			}
+		}
+	}
+}
+
 
 
 /*--------------------------------------------------------*/
@@ -1057,6 +1511,14 @@ p {
 		left: 50%;
 		margin-left: -500px;
 		
+		.white-title-first {
+			margin-bottom: 15px;
+		}
+
+		.pattern {
+			margin-bottom: 10px;
+		}
+		
 		p {
 			text-align: left;
 		}
@@ -1064,6 +1526,39 @@ p {
 		img {
 			width: auto !important;
 		}
+	}
+}
+
+.rooms-slider-block {
+	height: 100vh;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	
+	.owl-item {
+		height: 100vh; 
+	}
+	
+	.description-block {
+		display: flex;
+		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		-webkit-flex-direction: row;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-webkit-justify-content: flex-start;
+		justify-content: flex-start;
+		-webkit-align-content: center;
+		align-content: center;
+		-webkit-align-items: center;
+		align-items: center;
+		bottom: 0;
+		top: 0;
+	}
+	
+	.white-title-first {
+		width: 100%;
 	}
 }
 
@@ -1564,3 +2059,221 @@ p {
 /*--------------------------------------------------------*/
 /*----------------- end footer-other-page ----------------*/
 /*--------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------*/
+/*------------------ start main-contacts -----------------*/
+/*--------------------------------------------------------*/
+
+.main-contacts {
+	
+	li {
+		padding-bottom: 20px;
+	}
+
+	.red-title-second {
+		margin-bottom: 0;
+		text-transform: uppercase;
+	}
+
+	p:not([class]) {
+		margin-bottom: 20px;
+		color: #2d2d2d;
+		
+		a {
+			color: inherit;
+			font-style: normal;
+			text-decoration: none;
+			
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	address {
+		margin-bottom: 20px;
+		@include fontText ("MyriadPro-Regular", 18px, 400, 24px, #2d2d2d);
+	}
+
+	.map-block {
+		-webkit-border-radius: 15px;
+		border-radius: 15px;
+	}
+}
+
+/*--------------------------------------------------------*/
+/*------------------- end main-contacts ------------------*/
+/*--------------------------------------------------------*/
+
+
+
+.select {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  @include fontText ("MyriadPro-Regular", 18px, 400, 22px, #2d2d2d);
+  width: 100%;
+  height: 49px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  
+  .select-hidden {
+	  display: none;
+	  visibility: hidden;
+	  padding-right: 10px;
+	}
+
+	.select-styled {
+	  position: absolute;
+	  top: 0;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;
+	  background-color: #fff;
+	  border-radius: 3px;
+	  padding: 15px 25px;
+	  background-color: rgba(255, 255, 255, 0.7);
+	  -moz-transition: all 0.2s ease-in;
+	  -o-transition: all 0.2s ease-in;
+	  -webkit-transition: all 0.2s ease-in;
+	  transition: all 0.2s ease-in;
+	  
+	  &:after {
+	  	content: "";
+	  	width: 20px;
+	  	height: 11px;
+	  	position: absolute;
+	  	top: 20px;
+	  	right: 10px;
+	  	background: url("../images/arrow-form.png");
+	  	background-position: center;
+	  	background-repeat: no-repeat;
+	  	-webkit-transform: rotate(180deg);
+	  	-moz-transform: rotate(180deg);
+	  	-ms-transform: rotate(180deg);
+	  	-o-transform: rotate(180deg);
+	  	transform: rotate(180deg);
+		}
+
+		&:active {
+			background-color: #fff;
+		}
+
+		&:active,
+		&.active {
+			background-color: #fff;
+		}
+
+		&:active:after,
+		&.active:after {
+		  top: 21px;
+		  right: 9px;
+		}
+	}
+
+	.select-options {
+	  display: none;
+	  position: absolute;
+	  top: 100%;
+	  right: 0;
+	  left: 0;
+	  z-index: 999;
+	  margin: 0;
+	  padding: 0;
+	  list-style: none;
+	  background-color: #fff;
+	  
+	  li {
+		  margin: 0;
+		  padding: 12px 0;
+		  text-indent: 15px;
+		  border: 1px solid #e6e6e6;
+		  border-top: none;
+		  -moz-transition: all 0.15s ease-in;
+		  -o-transition: all 0.15s ease-in;
+		  -webkit-transition: all 0.15s ease-in;
+		  transition: all 0.15s ease-in;
+		  
+		  &::before {
+		  	display: none;
+		  }
+		  
+		  &:nth-child(2) {
+			border-top: 1px solid #e6e6e6;
+		  }
+		  
+		  &:hover {
+			  color: #000;
+			  background: #efefef;
+			}
+		}
+
+		li[rel="hide"] {
+			display: none;
+		}
+	}
+}
+
+.main-rooms {
+	min-height: 80vh;
+	height: auto;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-align-content: center;
+	align-content: center;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	
+	.prev-room,
+	.next-room {
+		position: absolute;
+		top: 50%;
+		margin-top: -31px;
+		left: -70px;  
+		display: block;
+		width: 39px;
+		height: 72px;
+		background-image: url(../images/slider-arrow.png);
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	.next-room  {
+		left: auto;
+		right: -70px;
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+	
+	.description-block {
+		width: 60%;
+		margin-top: 130px;
+		
+		p {
+			text-align: left;
+		}
+
+		.white-paragraph-first {
+			max-height: 30vh;
+			height: auto;
+			overflow-y: auto; 
+		}
+
+		.pattern {
+			margin-bottom: 15px;
+		}
+	}
+}

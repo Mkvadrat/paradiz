@@ -66,6 +66,21 @@ Version: 1.0
 	<!-- common js -->
 	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/common.js"></script>
 	
+	<!-- sweetalert -->
+	<link type="text/css" rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/sweetalert.css" />
+	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/sweetalert.min.js"></script>
+	
+	<!-- mask -->
+	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/mask.js"></script>
+	
+	<!-- timepicker -->
+	<link type="text/css" rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/jquery.timepicker.css" />
+	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/jquery.timepicker.min.js"></script>
+	
+	<!-- jquery ui -->
+	<link type="text/css" rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/js/jquery-ui-1.12.1/jquery-ui.min.css" />
+	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
 	<?php wp_head(); ?>
 
 </head>
