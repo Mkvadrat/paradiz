@@ -180,8 +180,9 @@ p.margin-bottom-none {
   z-index: 10;
 }
 
-.toBottom:hover {
-  color: #FFF;
+.toBottom:hover,
+.toBottom:visited {
+  color: #FFF !important;
 }
 
 .white-title-first {
@@ -930,13 +931,14 @@ p.margin-bottom-none {
 .sidebar .form-block .date-time .hours,
 .sidebar .form-block .date-time .minutes {
   float: left;
-  width: 24%;
+  width: 46%;
   float: right;
 }
 
 .sidebar .form-block .date-time .hours input,
 .sidebar .form-block .date-time .minutes input {
-  padding: 10px 35px 10px 12px;
+  padding: 10px 12px 10px 12px;
+  text-align: center;
 }
 
 .sidebar .form-block .date-time .minutes {
@@ -1347,15 +1349,15 @@ p.margin-bottom-none {
 }
 
 .header-page-main .menu > ul > .sub-menu:nth-child(1) > ul::before {
-  left: 77px;
+  left: 67px;
 }
 
 .header-page-main .menu > ul > .sub-menu:nth-child(2) > ul::before {
-  left: 216px;
+  left: 187px;
 }
 
 .header-page-main .menu > ul > .sub-menu:nth-child(3) > ul::before {
-  left: 315px;
+  left: 266px;
 }
 
 .header-page-main .menu > ul > .sub-menu:nth-child(5) > ul::before {
@@ -1363,15 +1365,15 @@ p.margin-bottom-none {
 }
 
 .header-page-main .menu > ul > .sub-menu:nth-child(1) > a::before {
-  right: 30px;
+  right: 18px;
 }
 
 .header-page-main .menu > ul > .sub-menu:nth-child(2) > a::before {
-  right: 20px;
+  right: 13px;
 }
 
 .header-page-main .menu > ul > .sub-menu:nth-child(3) > a::before {
-  right: 19px;
+  right: 12px;
 }
 
 .header-page-main .menu > ul > .sub-menu:nth-child(5) > a::before {
@@ -1926,15 +1928,15 @@ p.margin-bottom-none {
 }
 
 .footer-other-page .footer-menu-line .menu > ul > .sub-menu:nth-child(1) > ul::before {
-  left: 83px;
+  left: 70px;
 }
 
 .footer-other-page .footer-menu-line .menu > ul > .sub-menu:nth-child(2) > ul::before {
-  left: 226px;
+  left: 193px;
 }
 
 .footer-other-page .footer-menu-line .menu > ul > .sub-menu:nth-child(3) > ul::before {
-  left: 326px;
+  left: 278px;
 }
 
 .footer-other-page .footer-menu-line .menu > ul > .sub-menu:nth-child(5) > ul::before {
@@ -1942,15 +1944,15 @@ p.margin-bottom-none {
 }
 
 .footer-other-page .footer-menu-line .menu > ul > .sub-menu:nth-child(1) > a::before {
-  right: 25px;
+  right: 20px;
 }
 
 .footer-other-page .footer-menu-line .menu > ul > .sub-menu:nth-child(2) > a::before {
-  right: 17px;
+  right: 14px;
 }
 
 .footer-other-page .footer-menu-line .menu > ul > .sub-menu:nth-child(3) > a::before {
-  right: 16px;
+  right: 13px;
 }
 
 .footer-other-page .footer-menu-line .menu > ul > .sub-menu:nth-child(5) > a::before {
@@ -2476,7 +2478,7 @@ p.margin-bottom-none {
 
 .main-rooms .description-block {
   width: 60%;
-  margin-top: 130px;
+  margin-top: 150px;
 }
 
 .main-rooms .description-block p {
@@ -2484,9 +2486,7 @@ p.margin-bottom-none {
 }
 
 .main-rooms .description-block .white-paragraph-first {
-  max-height: 30vh;
   height: auto;
-  overflow-y: auto;
 }
 
 .main-rooms .description-block .pattern {
