@@ -379,6 +379,15 @@ function getDataCategory($taxonomy, $meta_key){
 	return $cat_data;
 }
 
+//Получение изображения комментария
+function getImageComments($comment_id){
+	$post_id = get_comment_meta($comment_id, 'image_comments',true);
+	
+	$value = wp_get_attachment_image_src( $post_id, 'full' );
+	
+	return $value[0];
+}
+
 /**********************************************************************************************************************************************************
 ***********************************************************************************************************************************************************
 ************************************************************ПЕРЕИМЕНОВАВАНИЕ ЗАПИСЕЙ В АКЦИИ***************************************************************
@@ -881,49 +890,65 @@ function true_add_ajax_comment(){
 add_action('wp_ajax_ajaxcomments', 'true_add_ajax_comment'); // wp_ajax_{значение параметра action}
 add_action('wp_ajax_nopriv_ajaxcomments', 'true_add_ajax_comment'); // wp_ajax_nopriv_{значение параметра action}
 
-
-
-
-
-
-
-
-
-
-
+/**********************************************************************************************************************************************************
+***********************************************************************************************************************************************************
+*******************************************************************ИЗОБРАЖЕНИЕ К КОММЕНТАРИЯМ**************************************************************
+***********************************************************************************************************************************************************
+***********************************************************************************************************************************************************/
+// для добовления фото
+function true_include_myuploadscript() {
+// у вас в админке уже должен быть подключен jQuery, если нет - раскомментируйте следующую строку:
+// wp_enqueue_script('jquery');
+// дальше у нас идут скрипты и стили загрузчика изображений WordPress
+if ( ! did_action( 'wp_enqueue_media' ) ) {
+wp_enqueue_media();
+}
+// само собой - меняем admin.js на название своего файла
+wp_enqueue_script( 'myuploadscript', get_stylesheet_directory_uri() . '/js/admin.js', array('jquery'), null, false );
+}
+ 
+add_action( 'admin_enqueue_scripts', 'true_include_myuploadscript' );
 
 // Добавляем новый метабокс на страницу редактирования комментария
-
 function extend_comment_add_meta_box(){
-	add_meta_box( 'title', __( 'Дополнительные поля для комментариев' ), 'extend_comment_meta_box', 'comment', 'normal', 'high' );
+	add_meta_box( 'title', __( 'Изображение комментария' ), 'extend_comment_meta_box', 'comment', 'normal', 'high' );
 }
 add_action( 'add_meta_boxes_comment', 'extend_comment_add_meta_box' );
 
 // Отображаем наши поля
 function extend_comment_meta_box( $comment ){
-	$image_comments  = get_comment_meta( $comment->comment_ID, 'image_comments', true );
-	
-	var_dump($image_comments);
-
-	wp_nonce_field( 'extend_comment_update', 'extend_comment_update', false );
-	?>
-	<p>
-		<label for="upload"><?php _e( 'Upload your file' ); ?></label>
-		<input id="upload" name="image_comments" type="file" value="<?php echo esc_attr( $image_comments ); ?>" size="30" />
-	</p>
-	
-	<?php
+	if( function_exists( 'true_image_uploader_field' ) ) {
+		true_image_uploader_field( 'image_comments', get_comment_meta($comment->comment_ID, 'image_comments',true) );
+	}
 }
 
+// Сохраняем данные метаполей, заполенных в админке на странице редактирования комментария
 function extend_comment_edit_meta_data( $comment_id ) {
-	if( ! isset( $_POST['extend_comment_update'] ) || ! wp_verify_nonce( $_POST['extend_comment_update'], 'extend_comment_update' ) )
-	return;
-
 	if( !empty($_POST['image_comments']) ){
-		$image_comments = sanitize_text_field($_POST['image_comments']);
-		update_comment_meta( $comment_id, 'image_comments', $image_comments );
+		$image = sanitize_text_field($_POST['image_comments']);
+		update_comment_meta( $comment_id, 'image_comments', $image );
 	}else{
 		delete_comment_meta( $comment_id, 'image_comments');
 	}
 }
 add_action( 'edit_comment', 'extend_comment_edit_meta_data' );
+
+function true_image_uploader_field( $name, $value = '', $w = 115, $h = 90) {
+	$default = get_stylesheet_directory_uri() . '/images/no-image.png';
+	if( $value ) {
+		$image_attributes = wp_get_attachment_image_src( $value, array($w, $h) );
+		$src = $image_attributes[0];
+	} else {
+		$src = $default;
+	}
+	echo '
+		<div>
+			<img data-src="' . $default . '" src="' . $src . '" width="' . $w . 'px" height="' . $h . 'px" />
+			<div>
+				<input type="hidden" name="' . $name . '" id="' . $name . '" value="' . $value . '" />
+				<button type="submit" class="upload_image_button button">Загрузить</button>
+				<button type="submit" class="remove_image_button button">&times;</button>
+			</div>
+		</div>
+	';
+}
