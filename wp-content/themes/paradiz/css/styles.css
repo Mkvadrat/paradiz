@@ -2197,6 +2197,8 @@ p.margin-bottom-none {
 .list-reviews li {
 
   margin-bottom: 40px;
+  
+  overflow: hidden;
 
 }
 
@@ -2700,7 +2702,7 @@ p.margin-bottom-none {
 
 .header-page-main .menu > ul > .sub-menu:nth-child(1) > ul::before {
 
-  left: 53px;
+  left: 66px;
 
 }
 
@@ -2708,15 +2710,15 @@ p.margin-bottom-none {
 
 .header-page-main .menu > ul > .sub-menu:nth-child(2) > ul::before {
 
-  left: 191px;
+  left: 182px;
 
 }
 
 
 
-.header-page-main .menu > ul > .sub-menu:nth-child(4) > ul::before {
+.header-page-main .menu > ul > .sub-menu:nth-child(3) > ul::before {
 
-  left: 406px;
+  left: 267px;
 
 }
 
@@ -2823,6 +2825,8 @@ p.margin-bottom-none {
   line-height: 18px;
 
   color: #fff;
+  
+  cursor: pointer;
   
   white-space: nowrap;
 
@@ -3523,6 +3527,8 @@ p.margin-bottom-none {
   background-repeat: no-repeat;
 
   background-color: #690907;
+  
+  background-position: center;
 
   /*&::before {
 
