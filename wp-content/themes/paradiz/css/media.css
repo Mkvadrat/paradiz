@@ -342,6 +342,10 @@
 	    left: auto;
 	}
 
+	.main-slider-block .description-block {
+		padding: 0 75px;
+	}
+
 }
 
 
