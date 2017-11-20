@@ -316,6 +316,10 @@
 		line-height: 50px;
 	}
 
+	.panorama-block {
+	    background-attachment: scroll;
+	}
+
 }
 
 @media only screen and (max-width : 600px) {
