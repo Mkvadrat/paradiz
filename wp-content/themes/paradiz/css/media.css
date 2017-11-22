@@ -254,6 +254,35 @@
 
 @media only screen and (max-width : 768px) {
 
+	#sixBlock p {
+		text-align: center;
+	}
+
+	.main-index .panorama-block:first-child .content-block {
+	    min-height: 570px;
+	    margin-top: 200px;
+	}
+
+	#ninBlock {
+		padding-top: 40px;
+	}
+
+	#frthBlock .toBottom {
+	    bottom: -20px;
+	}
+
+	#frthBlock {
+		padding-bottom: 40px;
+	}
+
+	.toBottom {
+		bottom: 20px;
+	}
+
+	.panorama-block .content-block {
+		min-height: 500px;
+	}
+
 	.list-galery {
 		display: flex;
 		-webkit-flex-wrap: wrap;
@@ -308,7 +337,7 @@
 	}
 
 	.main-index .panorama-block .content-block.content-block-first-block {
-		padding-top: 150px;
+		padding-top: 40px;
 	}
 
 	.white-title-first {
@@ -371,8 +400,8 @@
 	}
 
 	.white-title-first {
-	    font-size: 30px;
-	    line-height: 40px;
+	    font-size: 24px;
+	    line-height: 34px;
 	}
 
 }
