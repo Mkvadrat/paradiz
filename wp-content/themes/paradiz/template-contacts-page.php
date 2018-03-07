@@ -34,7 +34,7 @@ get_header();
         
         <!-- end header-banner-block -->
         
-        <div class="container content-page">
+        <div class="container content-page" id="anchor">
             <div class="row">
                     <div class="col-md-12">
                         <?php echo get_post_meta( get_the_ID(), 'title_text_block_a_contacts_page', $single = true ); ?>
