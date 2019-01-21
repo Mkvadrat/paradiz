@@ -49,12 +49,12 @@ get_header();
 									'terms' => getCurrentCatID()
 								)
 							),
+							'post_status' => 'publish',
 							'post_type'   => 'post',
 							'orderby'     => 'date',
 							'order'       => 'DESC',
 							'posts_per_page' => $GLOBALS['wp_query']->query_vars['posts_per_page'],
 							'paged'          => $current_page,
-
 						);
 			
 						$action_list = get_posts( $args );

@@ -33,6 +33,13 @@ $(document).ready(function() {
     })
 
 
+    // dotdotdot
+    $('.content-page .events-list li a.breakfast-links').dotdotdot({
+        height : 20,
+        ellipsis : "\u2026",
+        truncate : "word",
+        watch: "word",
+    });
 
     // MMENU
 
@@ -235,7 +242,9 @@ $(document).ready(function() {
 
 
     });
-
-
+    ($(window).height() < 500) ? 0 : $('.content-block').height($(window).height());
+    $(window).on('resize', function(){
+        $('.content-block').height($(window).height());
+    });
 
 });

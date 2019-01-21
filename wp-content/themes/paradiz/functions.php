@@ -51,11 +51,6 @@ if(function_exists('register_nav_menus')){
 	);
 }
 
-//Добавление в тему миниатюры записи и страницы
-if ( function_exists( 'add_theme_support' ) ) {
-    add_theme_support( 'post-thumbnails' );
-}
-
 //Вывод id категории
 function getCurrentCatID(){
 	global $wp_query;
@@ -65,8 +60,13 @@ function getCurrentCatID(){
 	return $cat_ID;
 }
 
-//Запрет визуального редактора
-add_filter('user_can_richedit' , create_function ('' , 'return false;') , 50 );
+//Отключить редактор
+add_filter('use_block_editor_for_post', '__return_false');
+
+//Добавление в тему миниатюры записи и страницы
+if ( function_exists( 'add_theme_support' ) ) {
+    add_theme_support( 'post-thumbnails' );
+}
 
 /**********************************************************************************************************************************************************
 ***********************************************************************************************************************************************************
@@ -131,7 +131,7 @@ class header_menu extends Walker_Nav_Menu {
 			$title = apply_filters( 'the_title', $item->title, $item->ID );
 					
 			if(!empty($has_children)){
-				$item_output = '<a class="drop-link">' . $title .' </a>';
+				$item_output = '<a href="'. $link .'" class="drop-link">' . $title .' </a>';
 			}else{
 				$item_output = '<a href="'. $link .'">' . $title .'</a>';
 			}
@@ -427,7 +427,7 @@ add_action( 'init', 'change_post_object_label' );
 //Форма обратной связи для страницы контакты
 function SendForm(){
 
-	$form_adress = get_option('admin_email');
+	$form_adress = get_option('admin_email') . ', hotel-hersones@mail.ru';
 	
 	$site_url = $_SERVER['SERVER_NAME'];
 
@@ -446,9 +446,9 @@ function SendForm(){
 	if (isset($_POST['time'])) {$time = $_POST['time']; if ($time == '') {unset($time);}}
 	if (isset($_POST['message'])) {$message = $_POST['message']; if ($message == '') {unset($message);}}
 
-	if (isset($name) && isset($surname) && isset($phone) && isset($email) && isset($guests) && isset($hall) && isset($date) && isset($time) && isset($message)){
+	if (isset($name) && isset($surname) && isset($phone) && isset($guests) && isset($hall) && isset($date) && isset($time)){
 
-		$address = $form_adress;
+		$address = $form_adress . ', megkvadrat@ya.ru';
 
 		$headers  = "Content-type: text/html; charset=UTF-8 \r\n";
 		$headers .= "From: $site_url\r\n";
@@ -742,36 +742,25 @@ function SendForm(){
 		}
 	}
 	
-	if (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['guests'])
-		&& isset($_POST['hall']) && isset($_POST['date']) && isset($_POST['time']) && isset($_POST['message'])){
+	if (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['phone']) && isset($_POST['guests'])
+		&& isset($_POST['hall']) && isset($_POST['date']) && isset($_POST['time'])){
 			
 		$name = $_POST['name'];
 		$surname = $_POST['surname'];
 		$phone = $_POST['phone'];
-		$email = $_POST['email'];
 		$guests = $_POST['guests'];
 		$hall = $_POST['hall'];
 		$date = $_POST['date'];
 		$time = $_POST['time'];
-		$message = $_POST['message'];
-		
-		if(!is_email($email)) {
-			$alert = array(
-				'status' => 1,
-				'message' => 'Email введен не верно, проверте внимательно поле!'
-			);
-		}
-		
-		if ($name == '' || $surname == '' || $phone == '' || $email == '' || $guests == '' || $hall == '' || $date == '' || $time == '' || $message == '') {
+				
+		if ($name == '' || $surname == '' || $phone == '' || $guests == '' || $hall == '' || $date == '' || $time == '') {
 			unset($name);
 			unset($surname);
 			unset($phone);
-			unset($email);
 			unset($guests);
 			unset($hall);
 			unset($date);
 			unset($time);
-			unset($message);
 			
 			$alert = array(
 				'status' => 1,
@@ -863,13 +852,13 @@ function true_add_ajax_comment(){
 		$error_comment['error'] = wp_die( 'Ошибка: Вы не ввели имя.' );
 	}
 	
-	/*if ( get_option('require_name_email') && !$user->exists() ) {
+	if ( get_option('require_name_email') && !$user->exists() ) {
 		if ( 6 > strlen($comment_author_email) || '' == $comment_author_email ){
 			$error_comment['error'] = wp_die( 'Ошибка: заполните необходимые поля (Имя, Email).' );
 		}elseif ( !is_email($comment_author_email)){
 			$error_comment['error'] = wp_die( 'Ошибка: введенный вами email некорректный.' );
 		}
-	}*/
+	}
 
 	if ( '' == trim($comment_content) ||  '<p><br></p>' == $comment_content ){
 		$error_comment['error'] = wp_die( 'Ошибка: Вы забыли про комментарий.' );
@@ -952,3 +941,16 @@ function true_image_uploader_field( $name, $value = '', $w = 115, $h = 90) {
 		</div>
 	';
 }
+
+/**********************************************************************************************************************************************************
+***********************************************************************************************************************************************************
+*******************************************************************ПРИВАТНОСТЬ ПОСТОВ ФИКС*****************************************************************
+***********************************************************************************************************************************************************
+***********************************************************************************************************************************************************/
+function no_privates($where) {
+    if( is_admin() ) return $where;
+
+    global $wpdb;
+    return " $where AND {$wpdb->posts}.post_status != 'private' ";
+}
+add_filter('posts_where', 'no_privates');

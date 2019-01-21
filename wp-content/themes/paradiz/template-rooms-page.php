@@ -13,7 +13,7 @@ get_header();
 ?>
 
     <!-- start main-rooms -->
-	<?php $background_block = getImageLink('background_images_rooms_page'); ?>
+	<?php $background_block = getImageLinkSingle(get_the_ID(), 'background_images_rooms_page'); ?>
     <div class="main-rooms"  style="background-image: url( '<?php echo $background_block ? $background_block : esc_url( get_template_directory_uri() ) . '/images/bg-rooms.jpg'; ?>' );">
 		<div class="container">
 			<div class="row">

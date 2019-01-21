@@ -124,7 +124,7 @@ get_header();
 
                             
 
-                            <a class="ancLinks toBottom" href="#frthBlock"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            <a class="ancLinks toBottom" href="#fifBlock"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 
                         </div>
 
@@ -144,7 +144,7 @@ get_header();
 
         <!-- start panorama-block -->
 
-        <?php $block_d = getImageLink('image_panorama_block_d_main_page'); ?>
+        <!--<?php $block_d = getImageLink('image_panorama_block_d_main_page'); ?>
 
         <div class="container-fluid panorama-block" id="frthBlock" style="background-image: url( '<?php echo $block_d ? $block_d : esc_url( get_template_directory_uri() ) . '/images/bg-fourth-block.png'; ?>' );">
 
@@ -184,7 +184,7 @@ get_header();
 
             </div>
 
-        </div>
+        </div>-->
 
         
 
@@ -308,7 +308,7 @@ get_header();
 
         </div>
 
-        <a class="ancLinks toBottom" href="#eightBlock"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+        <a class="ancLinks toBottom desctop-arrow" href="#eightBlock"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 
     </div>
 
@@ -320,47 +320,74 @@ get_header();
         <div class="owl-carousel owl-theme main-slider tablet-slider">
 
             <div>
-
-                <img class="tablet" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/sl-t.jpg" alt="">
-
+                <img class="tablet" src="/wp-content/gallery/slayder-dlya-glavnoy-stranicy/banket.jpg" alt="">
                 <div class="description-block">
-                  <p class="white-title-first">Очень вкусно</p>
+                  <p class="white-title-first">Банкетные меню</p>
                   <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
-                  <p class="white-paragraph-first">Краткое описание блюда в пару строк. На пример ключевые ингридиенты блюда</p>
-                  <a class="button-transparent" href="#">Подробнее</a>
+                  <p class="white-paragraph-first"> </p>
+                  <a class="button-transparent" href="/banketnoe-menyu-2/">Подробнее</a>
                 </div>
-
+            </div>
+            <div>
+                <img class="tablet" src="/wp-content/gallery/slayder-dlya-glavnoy-stranicy/barnoe.jpg" alt="">
+                <div class="description-block">
+                  <p class="white-title-first">Барное меню</p>
+                  <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                  <p class="white-paragraph-first"> </p>
+                  <a class="button-transparent" href="/barnoe-menyu/">Подробнее</a>
+                </div>
+            </div>
+            <div>
+                <img class="tablet" src="/wp-content/gallery/slayder-dlya-glavnoy-stranicy/corp.jpg" alt="">
+                <div class="description-block">
+                  <p class="white-title-first">Меню для корпоративных клиентов</p>
+                  <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                  <p class="white-paragraph-first"> </p>
+                  <a class="button-transparent" href="/bankety-yubilei-i-korporativy/">Подробнее</a>
+                </div>
+            </div>
+            <div>
+                <img class="tablet" src="/wp-content/gallery/slayder-dlya-glavnoy-stranicy/furshet.jpg" alt="">
+                <div class="description-block">
+                  <p class="white-title-first">Фуршетное меню</p>
+                  <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                  <p class="white-paragraph-first"> </p>
+                  <a class="button-transparent" href="/furshetnoe-menyu/">Подробнее</a>
+                </div>
+            </div>
+            <div>
+                <img class="tablet" src="/wp-content/gallery/slayder-dlya-glavnoy-stranicy/komplex.jpg" alt="">
+                <div class="description-block">
+                  <p class="white-title-first">Комплексные обеды от 15 чел</p>
+                  <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                  <p class="white-paragraph-first"> </p>
+                  <a class="button-transparent" href="/kompleksnye-obedy-ot-15-chel/">Подробнее</a>
+                </div>
+            </div>
+            <div>
+                <img class="tablet" src="/wp-content/gallery/slayder-dlya-glavnoy-stranicy/osnovnoe.jpg" alt="">
+                <div class="description-block">
+                  <p class="white-title-first">Основное меню</p>
+                  <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                  <p class="white-paragraph-first"> </p>
+                  <a class="button-transparent" href="/osnovnoe-menyu/">Подробнее</a>
+                </div>
+            </div>
+            <div>
+                <img class="tablet" src="/wp-content/gallery/slayder-dlya-glavnoy-stranicy/postnoe.jpg" alt="">
+                <div class="description-block">
+                  <p class="white-title-first">Постное меню</p>
+                  <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                  <p class="white-paragraph-first"> </p>
+                  <a class="button-transparent" href="/postnoe-menyu-2/">Подробнее</a>
+                </div>
             </div>
 
-        <div>
+        </div>
 
-            <img class="tablet" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/sl-t.jpg" alt="">
+<a class="ancLinks toBottom tablet-arrow" href="#eightBlock"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+    </div>
 
-            <div class="description-block">
-              <p class="white-title-first">Очень вкусно</p>
-              <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
-              <p class="white-paragraph-first">Краткое описание блюда в пару строк. На пример ключевые ингридиенты блюда</p>
-              <a class="button-transparent" href="#">Подробнее</a>
-          </div>
-
-      </div>
-
-      <div>
-
-        <img class="tablet" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/sl-t.jpg" alt="">
-
-        <div class="description-block">
-          <p class="white-title-first">Очень вкусно</p>
-          <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
-          <p class="white-paragraph-first">Краткое описание блюда в пару строк. На пример ключевые ингридиенты блюда</p>
-          <a class="button-transparent" href="#">Подробнее</a>
-      </div>
-
-  </div>
-
-</div>
-
-<a class="ancLinks toBottom" href="#eightBlock"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 
 </div>
 
@@ -370,47 +397,74 @@ get_header();
     <div class="owl-carousel owl-theme main-slider mobile-slider">
 
         <div>
-
-            <img class="mobile" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/sl-m.jpg" alt="">
-
+            <img class="tablet" src="/wp-content/uploads/2018/05/banket-1.jpg" alt="">
             <div class="description-block">
-              <p class="white-title-first">Очень вкусно</p>
-              <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
-              <p class="white-paragraph-first">Краткое описание блюда в пару строк. На пример ключевые ингридиенты блюда</p>
-              <a class="button-transparent" href="#">Подробнее</a>
-          </div>
-
-      </div>
-
-      <div>
-
-        <img class="tablet" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/sl-m.jpg" alt="">
-
-        <div class="description-block">
-          <p class="white-title-first">Очень вкусно</p>
-          <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
-          <p class="white-paragraph-first">Краткое описание блюда в пару строк. На пример ключевые ингридиенты блюда</p>
-          <a class="button-transparent" href="#">Подробнее</a>
-      </div>
-
-  </div>
-
-  <div>
-
-    <img class="tablet" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/sl-m.jpg" alt="">
-
-    <div class="description-block">
-      <p class="white-title-first">Очень вкусно</p>
-      <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
-      <p class="white-paragraph-first">Краткое описание блюда в пару строк. На пример ключевые ингридиенты блюда</p>
-      <a class="button-transparent" href="#">Подробнее</a>
-  </div>
+                <p class="white-title-first">Банкетные меню</p>
+                <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                <p class="white-paragraph-first"> </p>
+                <a class="button-transparent" href="/banketnoe-menyu-2/">Подробнее</a>
+            </div>
+        </div>
+        <div>
+            <img class="tablet" src="/wp-content/uploads/2018/05/barnoe-1.jpg" alt="">
+            <div class="description-block">
+                <p class="white-title-first">Барное меню</p>
+                <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                <p class="white-paragraph-first"> </p>
+                <a class="button-transparent" href="/barnoe-menyu/">Подробнее</a>
+            </div>
+        </div>
+        <div>
+            <img class="tablet" src="/wp-content/uploads/2018/05/corp-1.jpg" alt="">
+            <div class="description-block">
+                <p class="white-title-first">Меню для корпоративных клиентов</p>
+                <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                <p class="white-paragraph-first"> </p>
+                <a class="button-transparent" href="/bankety-yubilei-i-korporativy/">Подробнее</a>
+            </div>
+        </div>
+        <div>
+            <img class="tablet" src="/wp-content/uploads/2018/05/furshet-1.jpg" alt="">
+            <div class="description-block">
+                <p class="white-title-first">Фуршетное меню</p>
+                <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                <p class="white-paragraph-first"> </p>
+                <a class="button-transparent" href="/furshetnoe-menyu/">Подробнее</a>
+            </div>
+        </div>
+        <div>
+            <img class="tablet" src="/wp-content/uploads/2018/05/komplex-1.jpg" alt="">
+            <div class="description-block">
+                <p class="white-title-first">Комплексные обеды от 15 чел</p>
+                <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                <p class="white-paragraph-first"> </p>
+                <a class="button-transparent" href="/kompleksnye-obedy-ot-15-chel/">Подробнее</a>
+            </div>
+        </div>
+        <div>
+            <img class="tablet" src="/wp-content/uploads/2018/05/osnovnoe-1.jpg" alt="">
+            <div class="description-block">
+                <p class="white-title-first">Основное меню</p>
+                <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                <p class="white-paragraph-first"> </p>
+                <a class="button-transparent" href="/osnovnoe-menyu/">Подробнее</a>
+            </div>
+        </div>
+        <div>
+            <img class="tablet" src="/wp-content/uploads/2018/05/postnoe-1.jpg" alt="">
+            <div class="description-block">
+                <p class="white-title-first">Постное меню</p>
+                <img class="pattern" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pattern.png" alt="">
+                <p class="white-paragraph-first"> </p>
+                <a class="button-transparent" href="/postnoe-menyu-2/">Подробнее</a>
+            </div>
+        </div>
 
 </div>
 
+<a class="ancLinks toBottom mobile-arrow" href="#eightBlock"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 </div>
 
-<a class="ancLinks toBottom" href="#eightBlock"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 
 </div>
 
@@ -474,7 +528,7 @@ get_header();
 
                             
 
-                            <a class="ancLinks toBottom" href="#thrBlock"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            <a class="ancLinks toBottom" href="#tenBlock"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 
                         </div>
 

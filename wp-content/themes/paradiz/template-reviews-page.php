@@ -86,23 +86,23 @@ get_header();
 
 						<div class="form-block">
 
-							<p class="title-sidebar">Форма обратной связи</p>
+							<p class="title-sidebar">ОСТАВИТЬ ОТЗЫВ</p>
 
 							<form class="reviews-form" id="commentform">
 
 								<label for="name">Ваше имя*</label>
 
 								<input name="author" id="author" type="text">
+								
+								<label for="email">Ваш Email*</label>
+
+								<input name="email" id="email" type="text">
 
 								<label for="text-review">Текст отзыва*</label>
 
 								<textarea name="comment" id="comment"></textarea>
 
-								
-
 								<?php echo get_post_meta( get_the_ID(), 'link_personal_data_reviews_page', $single = true ); ?>
-
-								
 
 								<?php echo comment_id_fields(); ?> 
 

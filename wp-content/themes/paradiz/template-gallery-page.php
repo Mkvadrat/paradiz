@@ -48,7 +48,7 @@ get_header();
 								foreach($slider_image as $image) {
 						?>
 							<li style="background-image: url( <?php echo nextgen_esc_url($image->imageURL); ?> );">
-								<a class="button-transparent red-color fancybox" href="<?php echo nextgen_esc_url($image->imageURL); ?>" data-fancybox="images">Подробнее</a>
+								<a class="button-transparent red-color fancybox" data-caption="<?php echo htmlspecialchars_decode($image->alttext); ?>"  href="<?php echo nextgen_esc_url($image->imageURL); ?>" data-fancybox="images">Подробнее</a>
 							</li>
 						<?php
 								}
