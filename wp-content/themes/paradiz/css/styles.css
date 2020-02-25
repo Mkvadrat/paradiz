@@ -356,7 +356,7 @@ p.margin-bottom-none {
 }
 
 .button-transparent:hover::after {
-  height: 460%;
+  height: 545%;
 }
 
 /*.button-transparent:visited {
@@ -432,6 +432,7 @@ p.margin-bottom-none {
 .list-shares li {
   overflow: hidden;
   margin-bottom: 40px;
+  
 }
 
 .list-shares li .block-photo {
@@ -951,7 +952,7 @@ p.margin-bottom-none {
 }
 
 .sidebar .form-block .date-time #date {
-  width: 46%;
+  width: 100%;
   float: left;
 }
 
@@ -1350,6 +1351,15 @@ p.margin-bottom-none {
   font-weight: 700;
   line-height: 17px;
   color: #fff;
+    background: url(../images/whatsapp-w.png)no-repeat left top,url(../images/viber-w.png)no-repeat left 26px top;
+    background-size: auto 50%;
+    padding-left: 48px;
+}
+
+
+.header-page-main.header-other-page .right-block .phones-block {
+    background: url(../images/whatsapp.png)no-repeat left top,url(../images/viber.png)no-repeat left 26px top;
+    background-size: auto 50%;
 }
 
 .header-page-main .right-block .phones-block a {
@@ -2622,7 +2632,7 @@ div.breakfast-table {
 
 .breakfast-table tr td {
   width: 30%;
-  padding: 3px 0;
+  padding: 16px 0;
 }
 
 .breakfast-table tr td:first-child {
@@ -3061,6 +3071,42 @@ ul.red-bordered-list li {
   margin: 20px 0;
   border-bottom: 1px solid #ccc;
 }
+
+/*форма*/
+input#email {
+    display: block;
+    width: 100%;
+    height: 49px;
+    padding: 10px 25px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.7);
+    font-family: "MyriadPro-Regular";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #2d2d2d;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    Ъ
+/*кнопка*/
+a.button-transparent.foto-btn {
+    padding: 12px 19px;
+    margin-top: 10px;
+}
+a.button-transparent.foto-btn-ter {
+    padding: 12px 35px;
+    margin-top: 10px;
+}
+p.btn-test {
+    display: flex;
+    flex-direction: column;
+    max-width: 245px;
+}
 @media (max-width:620px) {
   .tea-page {
     flex-direction: column-reverse;
@@ -3069,3 +3115,81 @@ ul.red-bordered-list li {
     width: 100%;
   }
 }
+.list-galery.breakfast-list.menu-list li{
+    margin-right: 30px;
+    margin-bottom: 43px;
+    height: 180px;	
+    width: calc((100% / 3) - 20px);
+}
+.list-galery.breakfast-list.menu-list li:nth-child(3n) {
+    margin-right: 0;
+}
+.list-galery.breakfast-list.menu-list li .breakfast-links{
+font-weight: normal;
+font-size: 16px;
+line-height: 14px;
+text-align: left;
+color: #dadada;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin: 5px 0 0;
+    bottom: auto;
+}
+.list-galery.menu-list li::before {
+    border-radius: 15px;
+}
+.list-galery.menu-list {
+    padding-bottom: 25px;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 992px){
+.list-galery.breakfast-list.menu-list li {
+    height: 125px;
+    margin-bottom: 62px;
+}	
+#frthBlock .content-block.сhef.content-block-first-block{
+	height: auto!important;
+}
+}
+@media only screen and (max-width: 768px){
+.list-galery.breakfast-list.menu-list li {
+    width: 48%;
+    margin-right: 0;
+  }
+  .white-title-first{
+    margin-bottom: 0;
+  }	
+  .list-galery {
+    padding-top: 5px;
+  }
+}
+@media only screen and (max-width: 480px){
+.list-galery.breakfast-list.menu-list li {
+    width: 48%;
+}	
+}
+@media only screen and (max-width: 634px){
+	.list-shares li{
+		display: flex;
+		flex-direction: column;
+	}
+	.list-shares li .block-photo{
+		margin-left: 0;
+		margin-bottom: 0;
+		margin: 0 auto;
+	}
+}
+
+
+
+
+

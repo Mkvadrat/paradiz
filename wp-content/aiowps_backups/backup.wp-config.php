@@ -1,4 +1,5 @@
 <?php
+define('WP_CACHE', false); // Added by WP Rocket
 /**
  * Основные параметры WordPress.
  *
@@ -37,6 +38,7 @@ define('DB_CHARSET', 'utf8mb4');
 /** Схема сопоставления. Не меняйте, если не уверены. */
 define('DB_COLLATE', '');
 
+define('CONCATENATE_SCRIPTS', false );
 /**#@+
  * Уникальные ключи и соли для аутентификации.
  *
@@ -86,3 +88,5 @@ if ( !defined('ABSPATH') )
 
 /** Инициализирует переменные WordPress и подключает файлы. */
 require_once(ABSPATH . 'wp-settings.php');
+//Disable File Edits
+define('DISALLOW_FILE_EDIT', false);

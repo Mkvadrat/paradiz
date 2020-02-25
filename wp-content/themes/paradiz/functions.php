@@ -13,6 +13,61 @@ Version: 1.0
 ****************************************************************************НАСТРОЙКИ ТЕМЫ*****************************************************************
 ***********************************************************************************************************************************************************
 ***********************************************************************************************************************************************************/
+function mk_scripts(){
+	wp_register_style( 'awesome-css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', false, '' );
+	wp_enqueue_style( 'awesome-css' );
+	
+	wp_register_style( 'bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css', false, '3.3.4' );
+	wp_enqueue_style( 'bootstrap-css' );
+		
+	wp_register_style( 'bootstrap-theme-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css', false, '3.3.4' );
+	wp_enqueue_style( 'bootstrap-theme-css' );
+	
+	wp_register_style( 'demo-css', get_template_directory_uri() . '/css/demo.css');
+	wp_enqueue_style( 'demo-css' );
+	
+	wp_register_style( 'reset-css', get_template_directory_uri() . '/css/reset.css');
+	wp_enqueue_style( 'reset-css' );
+	
+	wp_register_style( 'fonts-css', get_template_directory_uri() . '/css/fonts.css');
+	wp_enqueue_style( 'fonts-css' );
+	
+	wp_register_style( 'styles-css', get_template_directory_uri() . '/css/styles.css');
+	wp_enqueue_style( 'styles-css' );
+	
+	wp_register_style( 'media-css', get_template_directory_uri() . '/css/media.css');
+	wp_enqueue_style( 'media-css' );
+	
+	wp_register_style( 'carousel-css', get_template_directory_uri() . '/css/owl.carousel.min.css');
+	wp_enqueue_style( 'carousel-css' );
+	
+	wp_register_style( 'owl-theme-css', get_template_directory_uri() . '/css/owl.theme.default.min.css');
+	wp_enqueue_style( 'owl-theme-css' );
+	
+	wp_register_style( 'fancybox-css', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css', false, '3.1.20' );
+	wp_enqueue_style( 'fancybox-css' );
+	
+	wp_register_style( 'mmenu-css', get_template_directory_uri() . '/css/jquery.mmenu.all.css');
+	wp_enqueue_style( 'mmenu-css' );
+	
+	wp_register_style( 'sweetalert-css', get_template_directory_uri() . '/css/sweetalert.css');
+	wp_enqueue_style( 'sweetalert-css' );
+		
+	if (!is_admin()) {
+		wp_enqueue_script( 'jquery-min', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js', '', '', false );
+		wp_enqueue_script( 'bootstrap-min', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js', '', '', false );
+		wp_enqueue_script( 'carousel-min', get_template_directory_uri() . '/js/owl.carousel.min.js', '', '', false );
+		wp_enqueue_script( 'fancybox-min', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js', '', '3.1.20', false );
+		wp_enqueue_script( 'mmenu-min', get_template_directory_uri() . '/js/jquery.mmenu.all.js', '', '', false );
+		wp_enqueue_script( 'dotdotdot-min', get_template_directory_uri() . '/js/jquery.dotdotdot.js', '', '', false );
+		wp_enqueue_script( 'sweetalert-min', get_template_directory_uri() . '/js/sweetalert.min.js', '', '', false );
+		wp_enqueue_script( 'reviews-min', get_template_directory_uri() . '/js/reviews.js', '', '1.12.1', false );
+		wp_enqueue_script( 'common-min', get_template_directory_uri() . '/js/common.js', '', '', false );
+		wp_enqueue_script( 'maps-min', 'https://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU', '', '', false );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'mk_scripts' );
+
 //Регистрируем название сайта
 function paradiz_wp_title( $title, $sep ) {
 	global $paged, $page;
@@ -77,7 +132,7 @@ if ( function_exists( 'add_theme_support' ) ) {
 class header_menu extends Walker_Nav_Menu {
 
 	// Добавляем классы к вложенным ul
-	function start_lvl( &$output, $depth ) {
+	function start_lvl(&$output, $depth = 0, $args = Array()){
 		// Глубина вложенных ul
 		$indent = ( $depth > 0  ? str_repeat( "\t", $depth ) : '' ); // code indent
 		$display_depth = ( $depth + 1); // because it counts the first submenu as 0
@@ -94,7 +149,7 @@ class header_menu extends Walker_Nav_Menu {
 	}
 
 	// Добавляем классы к вложенным li
-	function start_el( &$output, $item, $depth, $args ) {
+	function start_el(&$output, $item, $depth = 0, $args = Array(), $id = 0)  {
 		global $wpdb;
 		global $wp_query;
 		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
@@ -427,7 +482,7 @@ add_action( 'init', 'change_post_object_label' );
 //Форма обратной связи для страницы контакты
 function SendForm(){
 
-	$form_adress = get_option('admin_email') . ', hotel-hersones@mail.ru';
+	$form_adress = get_option('admin_email') . ',hotel-hersones@mail.ru,megkvadrat@ya.ru,artiomkrolok@mail.ru,pipboy@ukr.net';
 	
 	$site_url = $_SERVER['SERVER_NAME'];
 
@@ -448,7 +503,7 @@ function SendForm(){
 
 	if (isset($name) && isset($surname) && isset($phone) && isset($guests) && isset($hall) && isset($date) && isset($time)){
 
-		$address = $form_adress . ', megkvadrat@ya.ru';
+		$address = $form_adress;
 
 		$headers  = "Content-type: text/html; charset=UTF-8 \r\n";
 		$headers .= "From: $site_url\r\n";

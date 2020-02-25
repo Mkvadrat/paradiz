@@ -11,8 +11,35 @@ Disallow: */*/feed/*/
 Disallow: */feed
 Disallow: /*?*
 Disallow: /tag
+Disallow: /*events/
+Disallow: /*gallery/
 Disallow: /author
- 
+Allow: /wp-content/themes/*.css
+Allow: /wp-content/plugins/*.css
+Allow: /wp-content/uploads/*.css
+Allow: /wp-content/themes/*.js
+Allow: /wp-content/plugins/*.js
+Allow: /wp-content/uploads/*.js
+Allow: /wp-includes/css/
+Allow: /wp-includes/js/
+Allow: /wp-includes/images/
+Allow: /wp-content/*.png
+Allow: /wp-content/*.jpg
+Allow: /wp-includes/*.png
+Allow: /wp-includes/*.jpg
+Allow: /wp-content/themes/*.jpg
+Allow: /wp-content/themes/*.png
+Allow: /*.js
+Allow: /*.css
+Allow: /*.jpg
+Allow: /*.gif
+Allow: /*.png
+
+
+Sitemap: http://paradiz-hersones.ru/sitemap.xml
+
+
+
 User-agent: Yandex
 Disallow: /wp-admin
 Disallow: /wp-includes
@@ -27,6 +54,28 @@ Disallow: */feed
 Disallow: /*?*
 Disallow: /tag
 Disallow: /author
-Host: paradiz-hersones.ru
- 
+Disallow: /*events/
+Disallow: /*gallery/
+Allow: /wp-content/themes/*.css
+Allow: /wp-content/plugins/*.css
+Allow: /wp-content/uploads/*.css
+Allow: /wp-content/themes/*.js
+Allow: /wp-content/plugins/*.js
+Allow: /wp-content/uploads/*.js
+Allow: /wp-includes/css/
+Allow: /wp-includes/js/
+Allow: /wp-includes/images/
+Allow: /wp-content/*.png
+Allow: /wp-content/*.jpg
+Allow: /wp-includes/*.png
+Allow: /wp-includes/*.jpg
+Allow: /wp-content/themes/*.jpg
+Allow: /wp-content/themes/*.png
+Allow: /*.js
+Allow: /*.css
+Allow: /*.jpg
+Allow: /*.gif
+Allow: /*.png
+
+
 Sitemap: http://paradiz-hersones.ru/sitemap.xml

@@ -1,7 +1,15 @@
 /*==========  Desktop First Method  ==========*/
 
 
-
+@media only screen and (max-width : 1024px) and (min-width : 992px) {
+	
+	.header-page-main .right-block .button-transparent {
+		float: left;
+	}
+	
+	
+	
+}
 
 
 
@@ -30,7 +38,11 @@
 		margin-top: 170px;
 
 	}
-
+.footer-other-page .footer-menu-line .logo-block img {
+    float: none;
+    margin: 0 auto -42px auto;
+    display: block;
+}
 
 
 	.sidebar .form-block input[type="text"] {
@@ -151,7 +163,21 @@
 
 	}
 
-
+.mobile-block {
+    display: block;
+    float: left;
+    position: relative;
+    top: 22px;
+    margin-right: 20px;
+}
+	.header-page-main .left-block {
+    float: left;
+    width: 56%;
+}
+	.header-page-main .left-block .description-logo{
+		float: none;
+	}
+	
 
 }
 
@@ -164,7 +190,16 @@
 /* Medium Devices, Desktops */
 
 
-
+@media (max-width: 1366px) and (orientation: landscape) {
+	.panorama-block {
+    background-attachment: scroll;
+}
+}
+@media only screen and (max-width : 1024px) {
+	.panorama-block {
+    background-attachment: scroll;
+}
+}
 @media only screen and (max-width : 992px) {
 
 	.main-rooms {
@@ -226,9 +261,10 @@
 
 	.header-banner-block .title-header-block .title {
 
-		font-size: 28px;
+		font-size: 20px;
 
-		line-height: 34px;
+		line-height: 25px;
+    text-align: center;
 
 	}
 
@@ -282,11 +318,11 @@
 
 		width: 100%;
 
-		-webkit-order: 2;
+		/*-webkit-order: 2;
 
 		    -ms-order: 2;
 
-		        order: 2;
+		        order: 2;*/
 
 	}
 
@@ -296,11 +332,11 @@
 
 		width: 100%;
 
-		-webkit-order: 1;
+		/*-webkit-order: 1;
 
 		    -ms-order: 1;
 
-		        order: 1;
+		        order: 1;*/
 
 	}
 
@@ -309,6 +345,8 @@
 	.footer-other-page .footer-menu-line .logo-block {
 
 		margin-top: 10px;
+    float: none;
+    width: 100%;
 
 	}
 
@@ -438,6 +476,7 @@
 		float: none;
 
 		text-align: center;
+    margin-top: -35px;
 
 	}
 
@@ -475,7 +514,8 @@
 
 		-webkit-justify-content: center;
 
-		            justify-content: center;    
+		            justify-content: center;   
+    flex-direction: column; 
 
 	}
 
@@ -490,6 +530,9 @@
 		        order: 2;
 
 	   	float: none;
+		
+		width: 160px;
+    margin: 0 auto;
 
 	}
 
@@ -503,16 +546,51 @@
 
 		        order: 1;
 
-	    width: 100%;
-
-	    margin: 15px 0;
 
 	    text-align: center;
+		margin: 15px auto;
+    text-align: center;
+    width: 285px;
+    white-space: nowrap;
+    padding: 0;
 
 	}
 
+.white-title-first {
+    margin-top: 100px;
+}
 
-
+.socials {
+    display: none;
+}
+.socials-mobile {
+    padding: 10px 17px;
+    display: flex !important;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: relative;
+    width: 346px;
+    margin: 0 auto;
+    margin-right: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+.socials-mobile li {
+    margin: 6px 12px 6px 0 !important;
+    vertical-align: middle;
+}
+.socials-mobile li a {
+    display: flex;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.header-page-main .left-block {
+    width: 100%;
+}
 }
 
 
@@ -588,7 +666,7 @@
 
 	.panorama-block .content-block {
 
-		min-height: 500px;
+		min-height: 900px;
 
 	}
 	.footer-main-page.panorama-block .content-block {
@@ -725,6 +803,10 @@
 		padding-top: 40px;
 
 	}
+	
+	.main-index .panorama-block .content-block.content-block-first-block > img {
+		margin: 0 auto;
+	}
 
 
 
@@ -757,7 +839,9 @@
 		width: 100%;
     	max-width: fit-content;
 	}
-
+.white-title-first {
+    margin-top: 0;
+}
 }
 
 
@@ -852,29 +936,46 @@
 		width: 100%;
 
 	}
-
-
-
 	.header-page-main .right-block .phones-block a {
-
 		font-size: 18px;
-
 	}
-
-
-
 	.white-title-first {
-
 	    font-size: 24px;
-
 	    line-height: 34px;
-
+	    margin-bottom: 25px
 	}
-
-
-
+	.socials-mobile {
+	    width: 260px;
+	    display: block !important;
+	    text-align: center;
+	}
+	.socials-mobile li {
+	    display: inline-block;
+	}
+	.socials li:nth-child(1) {
+	    position: relative;
+	    top: 5px;
+	}
+	.list-galery.breakfast-list.menu-list li{
+		margin-bottom: 90px;
+	}
 }
 
+@media only screen and (max-width : 375px) {
+	.button-transparent{
+		min-width: 100px;
+	}
+	.panorama-block.footer-main-page address{
+		font-size: 15px;
+		margin-bottom: 10px;
+	}
+	.panorama-block.footer-main-page .white-paragraph-first{
+		padding-bottom: 0;
+	}
+	.panorama-block .content-block p {
+		margin-bottom: 0px;
+	}
+}
 
 
 

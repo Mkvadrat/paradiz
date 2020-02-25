@@ -76,7 +76,7 @@ get_header();
 						<p class="red-title-second"><a href="<?php echo $link; ?>"><?php echo $action->post_title; ?></a></p>
 						<p><?php echo htmlspecialchars_decode($descr); ?></p>
 						<?php if($date_end){ ?>
-							<p class="p-italic">Действует до <strong><?php echo $date_end; ?></strong></p>
+							<p class="p-italic">Действует: <strong><?php echo $date_end; ?></strong></p>
 						<?php } ?>
 						</div>
 						</li>
